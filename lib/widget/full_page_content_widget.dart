@@ -73,98 +73,107 @@ class _FullContentPageWidgetState extends State<FullContentPageWidget> {
               /// ẩn khối lượng
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 15.w),
-                child: Row(
-                  children: [
-                    GestureDetector(
-                      child: state.isHideVolume
-                          ? Image.asset(
-                              'assets/check_box_active.png',
-                              height: 15.r,
-                              width: 15.r,
-                            )
-                          : Container(
-                              height: 15.r,
-                              width: 15.r,
-                              decoration: BoxDecoration(
-                                  color: AppColors.colorF5f4f9,
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(3.r),
-                                  ),
-                                  border:
-                                      Border.all(color: AppColors.colorDfdee3)),
-                            ),
-                      onTap: () {
-                        _stockBloc.add(const HideVolumeEvent());
-                      },
+                child: GestureDetector(
+                  onTap: () {
+                    _stockBloc.add(const HideVolumeEvent());
+                  },
+                  child: ColoredBox(
+                    color: Colors.transparent,
+                    child: Row(
+                      children: [
+                        state.isHideVolume
+                            ? Image.asset(
+                                'assets/check_box_active.png',
+                                height: 15.r,
+                                width: 15.r,
+                              )
+                            : Container(
+                                height: 15.r,
+                                width: 15.r,
+                                decoration: BoxDecoration(
+                                    color: AppColors.colorF5f4f9,
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(3.r),
+                                    ),
+                                    border: Border.all(
+                                        color: AppColors.colorDfdee3)),
+                              ),
+                        8.horizontalSpace,
+                        Text(
+                          'Ẩn khối lượng',
+                          style: TextStyle(
+                            fontSize: 13.5.sp,
+                          ),
+                        ),
+                        const Spacer(),
+                        GestureDetector(
+                          onTap: () {
+                            _stockBloc.add(const ResetAllStockEvent());
+                          },
+                          child: buttonWidget(
+                            title: 'Bán nhiều mã',
+                            color: AppColors.color89242a,
+                            padding: EdgeInsets.symmetric(horizontal: 22.w),
+                          ),
+                        )
+                      ],
                     ),
-                    8.horizontalSpace,
-                    Text(
-                      'Ẩn khối lượng',
-                      style: TextStyle(
-                        fontSize: 13.5.sp,
-                      ),
-                    ),
-                    const Spacer(),
-                    buttonWidget(
-                      title: 'Bán nhiều mã',
-                      color: AppColors.color89242a,
-                      padding: EdgeInsets.symmetric(horizontal: 22.w),
-                    )
-                  ],
+                  ),
                 ),
               ),
 
               /// listStock
-              15.verticalSpace,
-              Container(
-                decoration: BoxDecoration(
-                    border: Border(
-                        bottom: BorderSide(
-                  color: AppColors.colorBbbbbb,
-                  width: 0.5.h,
-                ))),
-                padding: EdgeInsets.symmetric(horizontal: 15.w)
-                    .copyWith(bottom: 8.h),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Expanded(flex: 3, child: _getTextStockTitle('MÃ CP')),
-                    Expanded(
-                      flex: 3,
-                      child: Align(
-                        alignment: Alignment.centerRight,
-                        child: _getTextStockTitle('GIÁ VỐN'),
-                      ),
-                    ),
-                    Expanded(
+
+              if (state.stocksData.isNotEmpty) ...[
+                15.verticalSpace,
+                Container(
+                  decoration: BoxDecoration(
+                      border: Border(
+                          bottom: BorderSide(
+                    color: AppColors.colorBbbbbb,
+                    width: 0.5.h,
+                  ))),
+                  padding: EdgeInsets.symmetric(horizontal: 15.w)
+                      .copyWith(bottom: 8.h),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Expanded(flex: 3, child: _getTextStockTitle('MÃ CP')),
+                      Expanded(
                         flex: 3,
                         child: Align(
-                            alignment: Alignment.centerRight,
-                            child: _getTextStockTitle('GIÁ TT'))),
-                    Expanded(
-                      flex: 7,
-                      child: Padding(
-                        padding: EdgeInsets.only(right: 30.w),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            _getTextStockTitle('KL'),
-                            5.horizontalSpace,
-                            Image.asset(
-                              'assets/up_down.png',
-                              width: 6.r,
-                            ),
-                          ],
+                          alignment: Alignment.centerRight,
+                          child: _getTextStockTitle('GIÁ VỐN'),
                         ),
                       ),
-                    ),
-                    Expanded(
-                        flex: 4,
-                        child: Center(child: _getTextStockTitle('LÃI/LỖ'))),
-                  ],
+                      Expanded(
+                          flex: 3,
+                          child: Align(
+                              alignment: Alignment.centerRight,
+                              child: _getTextStockTitle('GIÁ TT'))),
+                      Expanded(
+                        flex: 7,
+                        child: Padding(
+                          padding: EdgeInsets.only(right: 30.w),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              _getTextStockTitle('KL'),
+                              5.horizontalSpace,
+                              Image.asset(
+                                'assets/up_down.png',
+                                width: 6.r,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                          flex: 4,
+                          child: Center(child: _getTextStockTitle('LÃI/LỖ'))),
+                    ],
+                  ),
                 ),
-              ),
-              if (state.stocksData.isNotEmpty)
                 ...List.generate(
                   state.stocksData.length,
                   (index) {
@@ -175,7 +184,8 @@ class _FullContentPageWidgetState extends State<FullContentPageWidget> {
                       index: index,
                     );
                   },
-                ),
+                )
+              ],
             ],
           ),
         );

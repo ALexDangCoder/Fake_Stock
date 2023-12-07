@@ -18,10 +18,11 @@ class StockWidget2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return cartBorderWidget(
       child: Container(
+        constraints: BoxConstraints(
+          maxWidth: MediaQuery.of(context).size.width * 0.5 - (15.w),
+        ),
         padding: EdgeInsets.all(5.r).copyWith(left: 6.w, right: 6.w),
-        width: MediaQuery.of(context).size.width * 0.5 - (11.5.w),
         child: Column(
-          mainAxisSize: MainAxisSize.min,
           children: [
             buildRowWidget(
               'KL khác',

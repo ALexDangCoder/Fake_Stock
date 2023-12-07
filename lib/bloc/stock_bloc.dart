@@ -57,5 +57,9 @@ class StockBloc extends Bloc<StockEvent, StockState> {
         isHideMoney: !state.isHideMoney,
       ));
     });
+
+    on<ResetAllStockEvent>((event, emit) {
+      emit(const StockState());
+    });
   }
 }

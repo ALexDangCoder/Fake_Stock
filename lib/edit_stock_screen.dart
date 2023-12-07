@@ -47,32 +47,33 @@ class EditStockScreenState extends State<EditStockScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(title: const Text('Chỉnh sửa cổ phiếu')),
-        body: Padding(
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      appBar: AppBar(title: const Text('Chỉnh sửa cổ phiếu')),
+      body: SingleChildScrollView(
+        child: Padding(
           padding: EdgeInsets.all(16.r),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text('Nhập Mã cổ phiếu:'),
-              TextField(
+              _textField(
+                title: 'Nhập Mã cổ phiếu:',
                 controller: nameController,
               ),
-              const Text('Nhập khối lượng thường:'),
-              TextField(
+              _textField(
+                title: 'Nhập khối lượng thường:',
                 controller: volumeNormalController,
               ),
-              const Text('Nhập khối lượng khả dụng:'),
-              TextField(
+              _textField(
+                title: 'Nhập khối lượng khả dụng:',
                 controller: volumeUseableController,
               ),
-              const Text('Nhập giá vốn:'),
-              TextField(
+              _textField(
+                title: 'Nhập giá vốn:',
                 controller: capitalPriceController,
               ),
-              const Text('Nhập giá thị trường:'),
-              TextField(
+              _textField(
+                title: 'Nhập giá thị trường:',
                 controller: marketPriceController,
               ),
               30.verticalSpace,
@@ -110,4 +111,23 @@ class EditStockScreenState extends State<EditStockScreen> {
       index: widget.index,
     ));
   }
+
+  Widget _textField({
+    required String title,
+    required TextEditingController controller,
+  }) =>
+      Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(title),
+          TextField(
+            decoration: InputDecoration(
+              hintText: title,
+            ),
+            controller: controller,
+          ),
+          10.verticalSpace,
+        ],
+      );
 }

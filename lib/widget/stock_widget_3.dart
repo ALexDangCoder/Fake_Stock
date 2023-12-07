@@ -23,7 +23,7 @@ class StockWidget3 extends StatelessWidget {
         padding: EdgeInsets.symmetric(
           vertical: 5.h,
         ).copyWith(left: 6.w, right: 6.w),
-        width: MediaQuery.of(context).size.width * 0.5 - (11.5.w),
+        width: MediaQuery.of(context).size.width * 0.5 - (15.w),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

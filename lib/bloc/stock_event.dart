@@ -58,3 +58,10 @@ class HideMoneyEvent extends StockEvent {
   @override
   List<Object?> get props => [];
 }
+
+class ResetAllStockEvent extends StockEvent {
+  const ResetAllStockEvent();
+
+  @override
+  List<Object?> get props => [];
+}

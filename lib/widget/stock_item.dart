@@ -76,7 +76,7 @@ class _StockItemState extends State<StockItem> {
                               _stockModel.name,
                               color: AppColors.getColorMoney(
                                   _stockModel.getPercentProfitOrLoss),
-                              fontWeight: FontWeight.w800,
+                              fontWeight: FontWeight.w700,
                             ),
                             Icon(
                               _isHide
@@ -190,30 +190,29 @@ class _StockItemState extends State<StockItem> {
           /// content
           Visibility(
             visible: _isHide,
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 15.w),
-              height: 198.h,
-              child: Column(
-                children: [
-                  /// tổng quan
-                  contentTop(),
-                  10.verticalSpace,
-                  Row(
-                    children: [
-                      /// left,
-                      contentLeft(),
-                      7.horizontalSpace,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                /// tổng quan
+                contentTop(),
+                10.verticalSpace,
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    /// left,
+                    contentLeft(),
+                    7.horizontalSpace,
 
-                      ///right
-                      contentRight()
-                    ],
-                  ),
-                  5.verticalSpace,
+                    ///right
+                    contentRight()
+                  ],
+                ),
+                5.verticalSpace,
 
-                  /// bottom button
-                  bottomButton(),
-                ],
-              ),
+                /// bottom button
+                bottomButton(),
+                8.verticalSpace,
+              ],
             ),
           )
         ],
@@ -259,10 +258,13 @@ class _StockItemState extends State<StockItem> {
         ],
       );
 
-  Widget contentTop() => FinanceWidget(
-        totalCapital: _stockModel.getTotalCapitalPrice,
-        marketValue: _stockModel.getTotalMarketPrice,
-        profitOrLoss: _stockModel.getProfitOrLoss,
+  Widget contentTop() => Padding(
+        padding: EdgeInsets.symmetric(horizontal: 15.w),
+        child: FinanceWidget(
+          totalCapital: _stockModel.getTotalCapitalPrice,
+          marketValue: _stockModel.getTotalMarketPrice,
+          profitOrLoss: _stockModel.getProfitOrLoss,
+        ),
       );
 
   Widget contentLeft() => StockWidget(
@@ -274,6 +276,7 @@ class _StockItemState extends State<StockItem> {
       );
 
   Widget contentRight() => Column(
+        mainAxisSize: MainAxisSize.max,
         children: [
           StockWidget2(
             totalAmount: '0',
@@ -312,6 +315,7 @@ Widget buildRowWidget(
   String? icon,
 }) {
   return Row(
+    mainAxisSize: MainAxisSize.min,
     children: [
       Text(
         title,

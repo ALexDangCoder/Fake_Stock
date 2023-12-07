@@ -25,7 +25,7 @@ class StockWidget extends StatelessWidget {
     return cartBorderWidget(
       child: Container(
         padding: EdgeInsets.all(5.r).copyWith(left: 6.w, right: 6.w),
-        width: MediaQuery.of(context).size.width * 0.5 - (16.h + 7.h),
+        width: MediaQuery.of(context).size.width * 0.5 - (15.w + 7.w),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
