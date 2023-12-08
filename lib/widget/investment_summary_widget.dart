@@ -162,7 +162,6 @@ class InvestmentSummaryWidgetState extends State<InvestmentSummaryWidget> {
             style: TextStyle(
               color: textColor,
               fontSize: 11.sp,
-              height: 1.sp,
               fontWeight: FontWeight.w600,
             ),
           ),
@@ -170,7 +169,7 @@ class InvestmentSummaryWidgetState extends State<InvestmentSummaryWidget> {
           Image.asset(
             'assets/icon_percent.png',
             color: textColor,
-            height: 6.8.sp,
+            height: 7.sp,
           ),
           2.horizontalSpace,
         ],
