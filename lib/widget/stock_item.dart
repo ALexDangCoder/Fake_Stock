@@ -210,7 +210,10 @@ class _StockItemState extends State<StockItem> {
                 5.verticalSpace,
 
                 /// bottom button
-                bottomButton(),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 15.w),
+                  child: bottomButton(),
+                ),
                 8.verticalSpace,
               ],
             ),
@@ -305,6 +308,7 @@ class _StockItemState extends State<StockItem> {
           fontWeight: fontWeight ?? FontWeight.w600,
         ),
         textAlign: textAlign,
+        maxLines: 1,
       );
 }
 
