@@ -22,6 +22,7 @@ class AppColors {
   static const Color color747474 = Color(0xFF747474);
   static const Color colorC3c1cc = Color(0xFFc3c1cc);
   static const Color colorDfdee3 = Color(0xFFdfdee3);
+  static const Color colorDacefe = Color(0xFFDacefe);
 
   static Color getColorMoney(num number, {Color? colorZero}) {
     if (number < 0) {

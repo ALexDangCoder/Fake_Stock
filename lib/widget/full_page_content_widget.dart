@@ -32,6 +32,10 @@ class _FullContentPageWidgetState extends State<FullContentPageWidget> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              SizedBox(
+                height: 25.5.h,
+                child: Image.asset('assets/banner_hot.jpg'),
+              ),
               9.verticalSpace,
               bringWidget(),
               11.verticalSpace,
