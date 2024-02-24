@@ -173,7 +173,7 @@ class _StockItemState extends State<StockItem> {
                                       Image.asset(
                                         'assets/icon_percent.png',
                                         color: Colors.white,
-                                        height: 7.3.sp,
+                                        height: 8.sp,
                                       ),
                                     ],
                                   ),
